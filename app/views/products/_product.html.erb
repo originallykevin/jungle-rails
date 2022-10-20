@@ -7,9 +7,19 @@
     </h1>
   <% end%>
   <div>
+  
+  <%# If quanity is zero then have SoldOut button and a disabled Add button %>
+  <% if product.quantity == 0 %>
+    <button type="button" class="soldout btn btn-danger">Sold Out</button>
+    <button type="button" class="btn btn-secondary" disabled>Add</button>
+
+  <% else %>
+
     <%= button_to add_item_cart_path(product_id: product.id), class: 'btn' ,
     method: :post do %>
       <%= fa_icon "shopping-cart", text: 'Add' %> 
     <% end %>
+
+  <% end %>  
   </div>
 </article>
