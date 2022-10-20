@@ -9,6 +9,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new
   end
 
+  # POST 
   def create
     @product = Product.new(product_params)
 
