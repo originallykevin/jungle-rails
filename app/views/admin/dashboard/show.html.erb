@@ -1,10 +1,28 @@
 <h1>Admin::Dashboard#show</h1>
 <%# <p>Find me in app/views/admin/dashboard/show.html.erb</p> %>
-<article>
-<div>
-<span> Product count: <%= @product_count %> </span>
-</div>
-<div>
-<span> Category count: <%= @category_count %> </span>
-</div>
-</article>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Listings</th>
+      <th scope="col">Number of each</th>
+      <th scope="col">Page</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Product</th>
+      <td><%= @product_count %></td>
+      <td><a href='admin/products'>Product Page</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Category</th>
+      <td><%= @category_count %></td>
+      <td>
+        <a href='/categories/1'>Evergreen</a>
+        <a href='/categories/2'>Shrubs</a>
+        <a href='/categories/3'>Trees</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
