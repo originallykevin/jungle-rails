@@ -9,7 +9,13 @@
     <%= sale.ends_on%>
   </td>
   <td>
-    STATUS
+    <% if sale.ends_on < Date.current %>
+    <span class="btn btn-danger" disabled>Finished</span>
+    <% elsif sale.starts_date > Date.current%>
+    <span class="btn btn-warning" disabled>Upcoming</span> 
+    <% else%>
+    <span class="btn btn-success" disabled>Active</span> 
+    <% end%>
   </td>
   <td>
     <%= sale.percent_off%>
