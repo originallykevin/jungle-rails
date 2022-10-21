@@ -2,10 +2,21 @@
 <p>Find me in app/views/sessions/new.html.erb</p>
 
 <%# Create form for user's to login with %>
+<form>
 <%= form_tag '/login' do %>
 
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
-
+<div class="form-group">
+  <label for="exampleInputEmail">Email address: </label>
+  <%= text_field_tag :email, "", class: "form-control" %>
+</div>
+<div class="form-group">  
+  <label for="exampleInputPassword">Password: </label>
+  <%= password_field_tag :password, "", class: "form-control" %> 
+</div>
+<br>
+<div class="form-group"> 
+  <%= submit_tag "Submit", class: "btn btn-primary" %>
+</div>
 <% end %>
+
+</form>
