@@ -16,7 +16,6 @@ RSpec.describe Product, type: :model do
     
     it 'validates product name' do
       product = Product.create(price: 200, quantity:100, category_id:@category.id)
-      # product.errors.full_messages
       expect(product.name).to be_nil
       expect(product.errors.full_messages).to include(/Name/)
       expect(product).not_to be_valid
