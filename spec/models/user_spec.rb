@@ -42,6 +42,14 @@ RSpec.describe User, type: :model do
       expect(authenticated).to be_truthy
       
     end
+
+    it 'should allow user to authenticate successfully with different case sensitive email input' do
+      @user1 = User.create(name: 'Nori Cet', email:'testemail@email.com', password:'12345', password_confirmation:'12345')
+      authenticated1 = User.authenticate_with_credentials('teSTEMail@email.com', '12345')
+      
+      expect(authenticated1).to be_present
+      expect(authenticated1).to be_truthy
+    end
   end
 
 end
