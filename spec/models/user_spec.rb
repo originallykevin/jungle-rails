@@ -43,12 +43,20 @@ RSpec.describe User, type: :model do
       
     end
 
+    it 'should allow for white space before and after email input' do
+      @user = User.create(name: 'Nori Cet', email:'testemail@email.com', password:'12345', password_confirmation:'12345')
+      authenticated = User.authenticate_with_credentials(' testemail@email.com ', '12345')
+
+      expect(authenticated).to be_present
+      expect(authenticated).to be_truthy
+    end
+
     it 'should allow user to authenticate successfully with different case sensitive email input' do
-      @user1 = User.create(name: 'Nori Cet', email:'testemail@email.com', password:'12345', password_confirmation:'12345')
-      authenticated1 = User.authenticate_with_credentials('teSTEMail@email.com', '12345')
+      @user = User.create(name: 'Nori Cet', email:'testemail@email.com', password:'12345', password_confirmation:'12345')
+      authenticated = User.authenticate_with_credentials('teSTEMail@email.com', '12345')
       
-      expect(authenticated1).to be_present
-      expect(authenticated1).to be_truthy
+      expect(authenticated).to be_present
+      expect(authenticated).to be_truthy
     end
   end
 
