@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
     it 'validates input of password is same as password confirmation' do
       user = User.create(name:'Nori Cet', email:'nori@cet.com', password:'password', password_confirmation:'notpassword')
       user.errors.full_messages
-    expect(user.errors.full_messages).to include(/Password/)
+      expect(user.errors.full_messages).to include(/Password/)
     end
 
     # email must be unique 
@@ -16,7 +16,20 @@ RSpec.describe User, type: :model do
       user1.save
       user2 = User.create(name:'Nori Cat', email: 'TEST@TEST.com', password:'password', password_confirmation:'password')
       user2.save
-    expect(user2.errors.full_messages).to include(/Email/)
+      expect(user2.errors.full_messages).to include(/Email/)
+    end
+    
+    # email, name should be required
+    it 'validates email and name to be required' do
+      user = User.create(name: nil, email: nil, password:'password')
+      expect(user.errors.full_messages).to include(/Name/)
+      expect(user.errors.full_messages).to include(/Email/)
+    end
+
+    # password min length 4
+    it 'validates password to have minimum length of 4' do
+      user = User.create(name: 'Nori Cet', email:'nori@cet.com', password: 'pas')
+      expect(user.errors.full_messages).to include(/Password/)
     end
   end
 
