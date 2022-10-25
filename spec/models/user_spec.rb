@@ -34,7 +34,14 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    
+    it 'validates authenticate_with_credentials method and utilize authenticate instance method' do
+      @user = User.create(name: 'Nori Cet', email:'testemail@email.com', password:'12345', password_confirmation:'12345')
+      authenticated = User.authenticate_with_credentials('testemail@email.com', '12345')
+
+      expect(authenticated).to be_present
+      expect(authenticated).to be_truthy
+      
+    end
   end
 
 end
