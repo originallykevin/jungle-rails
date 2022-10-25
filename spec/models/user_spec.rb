@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
       
     end
 
-    it 'should allow for white space before and after email input' do
+    it 'should allow for whitespace before and after email input' do
       @user = User.create(name: 'Nori Cet', email:'testemail@email.com', password:'12345', password_confirmation:'12345')
       authenticated = User.authenticate_with_credentials(' testemail@email.com ', '12345')
 
