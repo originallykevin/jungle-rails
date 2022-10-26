@@ -15,6 +15,7 @@ describe('product page testing', () => {
       .get(".products article")
       .should("be.visible");
 
+    let count = 0;
     // click add to cart
     cy
       .contains('Add')
@@ -24,6 +25,6 @@ describe('product page testing', () => {
     cy
       .get('.nav-item')
       .get('.nav-link')
-      .contains('My Cart (1)');
+      .contains(`My Cart (${count + 1})`);
   });
 });
